@@ -6,7 +6,7 @@ public class ItemNamedBy implements AddonInstance {
             "",
             "Track the user who named an item.",
             "Very useful for authentic currencies,",
-            "checks and signed items."
+            "contracts and signed items."
     };
 
     private final AddonsPlugin addons;
