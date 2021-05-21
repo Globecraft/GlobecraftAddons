@@ -1,0 +1,23 @@
+main: xyz.globecraft.addons.AddonsPlugin
+author: Antti & Kalpo
+name: GlobecraftAddons
+version: 1.0.0
+api-version: 1.15
+depend: [WorldEdit, WorldGuard]
+commands:
+  gcaddons:
+    description: Shows all of the available addons or the help of a single addon.
+    usage: '/<command> [addon]'
+    aliases: [gcaddon]
+  gcreload:
+    permission: gcaddons.reload
+    description: Reload a Globecraft addon
+    usage: '/<command> [addon]'
+  gcdisable:
+    permission: gcaddons.toggle
+    description: Disable a Globecraft addon
+    usage: '/<command> [addon]'
+  gcenable:
+    permission: gcaddons.toggle
+    description: Enable a Globecrafta addon
+    usage: '/<command> [addon]'

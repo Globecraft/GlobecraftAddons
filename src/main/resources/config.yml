@@ -1,0 +1,47 @@
+hypothermia:
+  enabled: true
+  danger-zone: 130
+  blocks-per-heart: 10
+  ticks-per-damage: 40
+  region-damage: 2
+  under-cover-light: 10
+
+randomspawn:
+  enabled: true
+  min-x: -1024
+  max-x: 1024
+  min-y: 64
+  max-y: 128
+  min-z: -1024
+  max-z: 1024
+  world: world
+  respawnRadius: 128
+  tries: 512
+  safe-blocks:
+    - grass_block
+    - grass
+    - dirt
+    - gravel
+    - stone
+    - oak_leaves
+
+voteskipnight:
+  enabled: true
+  notes: '%d = Digits. %s = Strings.'
+  msg:
+    pref: §a[§fVote§a]§7
+    success: It is now day!
+    votestart: 'The vote to kick out night has started! Goal: %d'
+    votes: '%s has voted! Votes: %d / %d'
+    doubles: You have already voted!
+    notnight: You can't vote to get rid of a night that isn't here yet!
+    error: 'An error has occured! Details: %s'
+  plugin:
+    percent: 75
+
+itemnamedby:
+  enabled: true
+
+customrecipes:
+  enabled: true
+

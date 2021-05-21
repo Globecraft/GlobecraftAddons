@@ -1,0 +1,19 @@
+# Chicken
+src/main/java/xyz/globecraft/addons/RandomSpawn.java @Chicken
+src/main/java/xyz/globecraft/addons/CustomRecipes.java @Chicken
+src/main/java/xyz/globecraft/addons/commands @Chicken
+src/main/java/resources @Chicken
+README.md @Chicken
+.github @Chicken
+LICENSE @Chicken
+pom.xml @Chicken
+
+# Kalpo
+# Will be added when you tell me your Github username
+# src/main/java/xyz/globecraft/addons/VoteSkipNight.java
+# src/main/java/xyz/globecraft/addons/ItemNamedBy.java
+
+# Chicken & Kalpo
+src/main/java/xyz/globecraft/addons/Hypothermia.java @Chicken # Kalpo
+src/main/java/xyz/globecraft/addons/AddonsPlugin.java @Chicken # Kalpo
+src/main/java/xyz/globecraft/addons/AddonInstance.java @Chicken # Kalpo
