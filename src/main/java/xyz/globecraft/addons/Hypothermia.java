@@ -96,6 +96,7 @@ public class Hypothermia implements AddonInstance, Listener {
 			if((py >= minY || icy) && playerOutside(p) && !p.isDead()) {
 				mult = 1;
 				dmg = (py - minY) / (layerY / 2);
+				if(dmg <= 0) dmg = 0;
 				for(ItemStack i : p.getInventory().getArmorContents()) {
 					if(i != null) {
 						switch(i.getType()) {
