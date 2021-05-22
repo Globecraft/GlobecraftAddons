@@ -10,7 +10,8 @@ public class RandomSpawn implements AddonInstance {
     };
 
     private final AddonsPlugin addons;
-    private boolean enabled, loaded;
+    private final boolean enabled;
+    private boolean loaded;
 
     public RandomSpawn(AddonsPlugin addons) {
         this.addons = addons;
@@ -54,6 +55,6 @@ public class RandomSpawn implements AddonInstance {
 
     @Override
     public String[] getHelpScreen() {
-        return this.randomSpawnHelpScreen;
+        return randomSpawnHelpScreen;
     }
 }

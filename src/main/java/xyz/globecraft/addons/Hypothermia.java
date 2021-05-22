@@ -36,9 +36,10 @@ public class Hypothermia implements AddonInstance, Listener {
 	};
 	
 	private final AddonsPlugin addons;
-	private int minY, tickClock, layerY, regionDamage, underCoverLight, clock;
-	private boolean enabled, loaded;
-	private Set<UUID> killed;
+	private int minY, layerY, regionDamage, underCoverLight, clock;
+	private final boolean enabled;
+	private boolean loaded;
+	private final Set<UUID> killed;
 	
 	public Hypothermia(AddonsPlugin addons) {
 		this.addons = addons;
@@ -55,11 +56,12 @@ public class Hypothermia implements AddonInstance, Listener {
 
 		this.minY = addons.getConfig().getInt("hypothermia.danger-altitude", 130);
 		this.layerY = addons.getConfig().getInt("hypothermia.blocks-per-heart", 10);
-		this.tickClock = addons.getConfig().getInt("hypothermia.ticks-per-damage", 40);
 		this.regionDamage = addons.getConfig().getInt("hypothermia.region-damage", 2);
 		this.underCoverLight = addons.getConfig().getInt("hypothermia.under-cover-light", 10);
 
-		clock = Bukkit.getScheduler().scheduleSyncRepeatingTask(addons, new Runnable() {
+		int tickClock = addons.getConfig().getInt("hypothermia.ticks-per-damage", 40);
+
+		this.clock = Bukkit.getScheduler().scheduleSyncRepeatingTask(addons, new Runnable() {
 			public void run() {
 				onTickClock();
 			}
@@ -122,14 +124,12 @@ public class Hypothermia implements AddonInstance, Listener {
 
 	@EventHandler
 	public void onPlayerDeath(PlayerDeathEvent event) {
-		if(!this.enabled) return;
+		if(!this.loaded) return;
 
-		Player player = (Player) event.getEntity();
-		UUID uuid = player.getUniqueId();
-
+		UUID uuid = event.getEntity().getUniqueId();
 		if(this.killed.contains(uuid)) {
 			this.killed.remove(uuid);
-			event.setDeathMessage(player.getDisplayName() + " died from hypothermia.");
+			event.setDeathMessage(event.getEntity().getDisplayName() + " died from hypothermia");
 		}
 	}
 

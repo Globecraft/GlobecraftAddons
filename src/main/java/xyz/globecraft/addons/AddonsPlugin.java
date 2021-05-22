@@ -48,6 +48,11 @@ public class AddonsPlugin extends JavaPlugin {
 		getCommand("gcdisable").setExecutor(new GcDisable(this));
 		getCommand("gcenable").setExecutor(new GcEnable(this));
 
+		TabCompleter tab = new TabCompleter(this);
+		getCommand("gcaddons").setTabCompleter(tab);
+		getCommand("gcreload").setTabCompleter(tab);
+		getCommand("gcdisable").setTabCompleter(tab);
+		getCommand("gcenable").setTabCompleter(tab);
 	}
 
 	@Override

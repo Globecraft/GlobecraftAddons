@@ -22,7 +22,7 @@ public class CustomRecipes implements AddonInstance {
     };
 
     private final AddonsPlugin addons;
-    private boolean enabled;
+    private final boolean enabled;
     private boolean loaded;
 
     public CustomRecipes(AddonsPlugin addons) {

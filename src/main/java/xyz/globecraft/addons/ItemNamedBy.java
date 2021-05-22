@@ -1,6 +1,16 @@
 package xyz.globecraft.addons;
 
-public class ItemNamedBy implements AddonInstance {
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.PrepareAnvilEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.Collections;
+
+public class ItemNamedBy implements AddonInstance, Listener {
     private static final String[] itemNamedByHelpScreen = {
             "-- ItemNamedBy --",
             "",
@@ -9,27 +19,44 @@ public class ItemNamedBy implements AddonInstance {
             "contracts and signed items."
     };
 
-    private final AddonsPlugin addons;
-    private boolean enabled, loaded;
+    private final boolean enabled;
+    private boolean loaded;
 
     public ItemNamedBy(AddonsPlugin addons) {
-        this.addons = addons;
-        this.enabled = this.addons.getConfig().getBoolean("itemnamedby.enabled", false);
+        this.enabled = addons.getConfig().getBoolean("itemnamedby.enabled", false);
         this.loaded = false;
+        addons.getServer().getPluginManager().registerEvents(this, addons);
     }
 
     @Override
     public void enable() {
         if(this.loaded) return;
         this.loaded = true;
-        // TODO: implement addon
     }
 
     @Override
     public void disable() {
         if(!this.loaded) return;
         this.loaded = false;
+    }
 
+    @EventHandler
+    public void onPlayerNameItem(PrepareAnvilEvent event) {
+        if(!this.loaded) return;
+
+        try {
+            if (event.getResult().getType() != Material.AIR) {
+                String oldName = event.getInventory().getItem(0).getItemMeta().getDisplayName();
+                String newName = event.getResult().getItemMeta().getDisplayName();
+                if (event.getViewers().get(0) != null && !oldName.equals(newName)) {
+                    ItemStack output = event.getResult();
+                    ItemMeta meta = output.getItemMeta();
+                    meta.setLore(Collections.singletonList(ChatColor.GRAY + "Named by " + event.getViewers().get(0).getName()));
+                    output.setItemMeta(meta);
+                    event.setResult(output);
+                }
+            }
+        } catch(NullPointerException ignored) { }
     }
 
     @Override
@@ -54,6 +81,6 @@ public class ItemNamedBy implements AddonInstance {
 
     @Override
     public String[] getHelpScreen() {
-        return this.itemNamedByHelpScreen;
+        return itemNamedByHelpScreen;
     }
 }

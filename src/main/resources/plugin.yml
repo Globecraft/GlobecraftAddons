@@ -21,3 +21,13 @@ commands:
     permission: gcaddons.toggle
     description: Enable a Globecrafta addon
     usage: '/<command> [addon]'
+  rtp:
+    permission: gcaddons.randomspawn
+    description: Randomly teleport somewhere on the map
+    usage: '/<command>'
+    aliases: [randomtp]
+  vday:
+    permission: gcaddons.voteskipnight
+    description: Vote to skip the night
+    usage: '/<command>'
+    aliases: [vd, voteday, dset, dvote]
