@@ -43,7 +43,7 @@ public class VoteSkipNight implements AddonInstance, CommandExecutor {
             public void run() {
                 if (VoteSkipNight.this.world != null && VoteSkipNight.this.nightTime) {
                     long t = VoteSkipNight.this.world.getTime() % 24000L;
-                    if (t > 6000L && t < 18000L) {
+                    if (t < 13000L) {
                         VoteSkipNight.this.nightTime = false;
                         VoteSkipNight.this.players.clear();
                         VoteSkipNight.this.goal = 0;
@@ -68,7 +68,7 @@ public class VoteSkipNight implements AddonInstance, CommandExecutor {
             if (sender instanceof Player) {
                 Player p = (Player)sender;
                 long time = p.getWorld().getTime() % 24000L;
-                if (time > 14000L || time < 6000L) {
+                if (time > 13000L) {
                     if (!this.nightTime) {
                         this.world = p.getWorld();
                         this.goal = (int)Math.ceil((this.addons.getServer().getOnlinePlayers().size() * this.getPercent() / 100f));
@@ -82,9 +82,7 @@ public class VoteSkipNight implements AddonInstance, CommandExecutor {
                         p.sendMessage(this.localeDoubles());
                     }
                     if (this.players.size() >= this.goal) {
-                        if (Math.random() > 0.5D)
-                            p.getWorld().setFullTime(p.getWorld().getFullTime() - 24000L);
-                        p.getWorld().setTime(6000L);
+                        p.getWorld().setTime(0L);
                         this.players.clear();
                         this.nightTime = false;
                     }
