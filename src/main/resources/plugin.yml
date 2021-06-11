@@ -6,6 +6,7 @@ api-version: 1.15
 depend: [WorldEdit, WorldGuard]
 commands:
   gcaddons:
+    permission: gcaddons.list
     description: Shows all of the available addons or the help of a single addon.
     usage: '/<command> [addon]'
     aliases: [gcaddon]
@@ -22,7 +23,7 @@ commands:
     description: Enable a Globecrafta addon
     usage: '/<command> [addon]'
   rtp:
-    permission: gcaddons.randomspawn
+    permission: gcaddons.rtp
     description: Randomly teleport somewhere on the map
     usage: '/<command>'
     aliases: [randomtp]
