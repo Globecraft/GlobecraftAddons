@@ -44,7 +44,7 @@ Start a night skip vote or add your vote to the pool.
 ### rtp
 
 Permission: `gcaddons.rtp`  
-Aliases: `randomtp`
+Aliases: `randomtp`  
 Usage: `/rtp`
 
 Teleport randomly inside the boundaries of RandomSpawn addon.
