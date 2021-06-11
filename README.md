@@ -2,6 +2,53 @@
 
 Plugin of miscellaneous addons for the Globecraft server.
 
+## Commands
+
+### gcaddons
+
+Permission: `gcaddons.list`  
+Aliases: `gcaddon`  
+Usage: `/gcaddons [addon]`
+
+Show a list of all addons or information about specific addon.
+
+### gcenable
+
+Permission: `gcaddons.toggle`  
+Usage: `/gcenable <addon>`
+
+Enable an addon.
+
+### gcdisable
+
+Permission: `gcaddons.toggle`  
+Usage: `/gcdisable <addon>`
+
+Disable an addon.
+
+### gcreload
+
+Permission: `gcaddons.reload`  
+Usage: `/gcreload <addon>`
+
+Reload an addon (quickly disable and enable).
+
+### vday
+
+Permission: `gcaddons.voteskipnight`  
+Aliases: `vd` `voteday` `dset` `dvote`  
+Usage: `/vday`
+
+Start a night skip vote or add your vote to the pool.
+
+### rtp
+
+Permission: `gcaddons.rtp`  
+Aliases: `randomtp`
+Usage: `/rtp`
+
+Teleport randomly inside the boundaries of RandomSpawn addon.
+
 ## Included add-ons
 
 ### CustomRecipes
