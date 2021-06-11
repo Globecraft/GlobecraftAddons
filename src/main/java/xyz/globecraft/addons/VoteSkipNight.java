@@ -62,7 +62,10 @@ public class VoteSkipNight implements AddonInstance, CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(!this.loaded) return false;
+        if(!this.loaded) {
+            sender.sendMessage("This addon is disabled!");
+            return true;
+        }
 
         if (args.length == 0)
             if (sender instanceof Player) {
