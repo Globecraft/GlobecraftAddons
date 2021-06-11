@@ -1,6 +1,8 @@
 package xyz.globecraft.addons;
 
-import org.bukkit.ChatColor;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -43,15 +45,18 @@ public class ItemNamedBy implements AddonInstance, Listener {
     @EventHandler
     public void onPlayerNameItem(PrepareAnvilEvent event) {
         if(!this.loaded) return;
-
         try {
             if (event.getResult().getType() != Material.AIR) {
-                String oldName = event.getInventory().getItem(0).getItemMeta().getDisplayName();
-                String newName = event.getResult().getItemMeta().getDisplayName();
+                String oldName = "";
+                if(event.getInventory().getItem(0).getItemMeta().hasDisplayName())
+                    oldName = ((TextComponent) event.getInventory().getItem(0).getItemMeta().displayName()).content();
+                String newName = "";
+                if(event.getResult().getItemMeta().hasDisplayName())
+                    newName = ((TextComponent) event.getResult().getItemMeta().displayName()).content();
                 if (event.getViewers().get(0) != null && !oldName.equals(newName)) {
                     ItemStack output = event.getResult();
                     ItemMeta meta = output.getItemMeta();
-                    meta.setLore(Collections.singletonList(ChatColor.GRAY + "Named by " + event.getViewers().get(0).getName()));
+                    meta.lore(Collections.singletonList(Component.text("Named by " + event.getViewers().get(0).getName()).color(NamedTextColor.GRAY)));
                     output.setItemMeta(meta);
                     event.setResult(output);
                 }
