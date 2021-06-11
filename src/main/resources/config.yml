@@ -10,12 +10,10 @@ randomspawn:
   enabled: true
   min-x: -1024
   max-x: 1024
-  min-y: 64
-  max-y: 128
   min-z: -1024
   max-z: 1024
   world: world
-  respawnRadius: 128
+  respawn-radius: 128
   tries: 512
   safe-blocks:
     - grass_block
