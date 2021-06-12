@@ -3,7 +3,7 @@ author: Antti & Kalpo
 name: GlobecraftAddons
 version: 1.0.0
 api-version: 1.15
-depend: [WorldEdit, WorldGuard]
+depend: [WorldEdit, WorldGuard, Guilds]
 commands:
   gcaddons:
     permission: gcaddons.list

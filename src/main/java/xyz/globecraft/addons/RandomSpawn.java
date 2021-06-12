@@ -1,5 +1,6 @@
 package xyz.globecraft.addons;
 
+import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Block;
@@ -11,6 +12,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
+
+import org.guilds.plugin.territory.GMeta;
 
 import java.util.List;
 import java.util.Random;
@@ -91,13 +94,16 @@ public class RandomSpawn implements AddonInstance, Listener, CommandExecutor {
         for(int i = 0; i < this.tries; i++) {
             int x = this.random.nextInt(maxX - minX) + minX;
             int z = this.random.nextInt(maxZ - minZ) + minZ;
-            // TODO: Guilds support
             // TODO: async?
             Block landing = this.world.getHighestBlockAt(x, z);
             if(this.safeBlocks.contains(landing.getType().toString().toLowerCase())) {
-                Location target = landing.getLocation();
-                target.add(0.5, 1, 0.5);
-                return target;
+                Chunk chunk = landing.getLocation().getChunk();
+                GMeta meta = GMeta.getClaim(chunk.getWorld(), chunk.getX(), chunk.getZ());
+                if(meta == null || meta.isEmpty()) {
+                    Location target = landing.getLocation();
+                    target.add(0.5, 1, 0.5);
+                    return target;
+                }
             }
         }
         return this.world.getSpawnLocation();
