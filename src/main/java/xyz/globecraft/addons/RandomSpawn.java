@@ -1,6 +1,5 @@
 package xyz.globecraft.addons;
 
-import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Block;
@@ -97,8 +96,7 @@ public class RandomSpawn implements AddonInstance, Listener, CommandExecutor {
             // TODO: async?
             Block landing = this.world.getHighestBlockAt(x, z);
             if(this.safeBlocks.contains(landing.getType().toString().toLowerCase())) {
-                Chunk chunk = landing.getLocation().getChunk();
-                GMeta meta = GMeta.getClaim(chunk.getWorld(), chunk.getX(), chunk.getZ());
+                GMeta meta = GMeta.getClaim(landing.getLocation().getChunk());
                 if(meta == null || meta.isEmpty()) {
                     Location target = landing.getLocation();
                     target.add(0.5, 1, 0.5);
