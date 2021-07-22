@@ -43,3 +43,7 @@ itemnamedby:
 customrecipes:
   enabled: true
 
+golemdrops:
+  enabled: true
+  min: 1
+  max: 2

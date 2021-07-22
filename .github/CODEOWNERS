@@ -1,6 +1,7 @@
 # Chicken
 src/main/java/xyz/globecraft/addons/RandomSpawn.java @Chicken
 src/main/java/xyz/globecraft/addons/CustomRecipes.java @Chicken
+src/main/java/xyz/globecraft/addons/GolemDrops.java @Chicken
 src/main/java/xyz/globecraft/addons/commands @Chicken
 src/main/java/resources @Chicken
 README.md @Chicken

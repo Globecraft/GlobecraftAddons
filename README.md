@@ -90,3 +90,8 @@ Nights are annoying to skip on multiplayer servers
 because there is always someone refusing to sleep.  
 This addon makes it so that only a part of players  
 need to vote for the skip and it will happen.
+
+### GolemDrops
+
+Customise the amount of iron drops golems produce.  
+Used to discourage automatic farms.
