@@ -91,7 +91,8 @@ because there is always someone refusing to sleep.
 This addon makes it so that only a part of players  
 need to vote for the skip and it will happen.
 
-### GolemDrops
+### DropModifier
 
-Customise the amount of iron drops golems produce.  
-Used to discourage automatic farms.
+Customise mob drops to discourage automatic farming.  
+Set the iron golem iron drop rate.  
+And disallow gold dropping from nether mobs.

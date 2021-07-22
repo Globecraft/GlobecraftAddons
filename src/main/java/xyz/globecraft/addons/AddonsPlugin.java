@@ -35,7 +35,7 @@ public class AddonsPlugin extends JavaPlugin {
 		instances.add(new ItemNamedBy(this));
 		instances.add(new RandomSpawn(this));
 		instances.add(new VoteSkipNight(this));
-		instances.add(new GolemDrops(this));
+		instances.add(new DropModifier(this));
 
 		for(AddonInstance instance : instances) {
 			if(instance.enabled()) {
