@@ -1,6 +1,6 @@
 hypothermia:
   enabled: true
-  danger-zone: 130
+  danger-altitude: 130
   blocks-per-heart: 10
   ticks-per-damage: 40
   region-damage: 2
