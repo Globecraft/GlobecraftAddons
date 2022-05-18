@@ -2,8 +2,6 @@
 
 Plugin of miscellaneous addons for the Globecraft server.
 
-Currently there's no way for an outsider to build this plugin due to RandomSpawn addon requiring access to the Guilds jar.
-
 ## Commands
 
 ### gcaddons

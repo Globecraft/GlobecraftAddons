@@ -37,13 +37,6 @@
           <version>7.0.4</version>
           <scope>provided</scope>
       </dependency>
-      <dependency>
-          <groupId>org.guilds.plugin</groupId>
-          <artifactId>plugin</artifactId>
-          <version>Beta-1.0</version>
-          <scope>system</scope>
-          <systemPath>${project.basedir}/Guilds-BETA-1.0.jar</systemPath>
-      </dependency>
   </dependencies>
 
   <build>
