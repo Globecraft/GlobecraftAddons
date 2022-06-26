@@ -18,7 +18,8 @@ public class CustomRecipes implements AddonInstance {
             "Recipes:",
             "coal to ink sac",
             "charcoal to ink sac",
-            "powered rails with iron"
+            "powered rails with iron",
+            "saddle"
     };
 
     private final AddonsPlugin addons;
@@ -48,9 +49,16 @@ public class CustomRecipes implements AddonInstance {
         rails.setIngredient('S', Material.STICK);
         rails.setIngredient('R', Material.REDSTONE);
 
+        ShapedRecipe saddle = new ShapedRecipe(new NamespacedKey(this.addons, "saddle"), new ItemStack(Material.SADDLE, 1));
+        saddle.shape("LLL", "LIL", "S S");
+        saddle.setIngredient('L', Material.LEATHER);
+        saddle.setIngredient('I', Material.IRON_INGOT);
+        saddle.setIngredient('S', Material.STRING);
+
         Bukkit.addRecipe(ink);
         Bukkit.addRecipe(ink2);
         Bukkit.addRecipe(rails);
+        Bukkit.addRecipe(saddle);
     }
 
     @Override
@@ -61,6 +69,7 @@ public class CustomRecipes implements AddonInstance {
         Bukkit.removeRecipe(new NamespacedKey(this.addons, "coal_ink_sac"));
         Bukkit.removeRecipe(new NamespacedKey(this.addons, "coal_ink_sac2"));
         Bukkit.removeRecipe(new NamespacedKey(this.addons, "iron_powered_rail"));
+        Bukkit.removeRecipe(new NamespacedKey(this.addons, "saddle"));
     }
 
     @Override
