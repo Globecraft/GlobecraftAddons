@@ -19,7 +19,8 @@ public class CustomRecipes implements AddonInstance {
             "coal to ink sac",
             "charcoal to ink sac",
             "powered rails with iron",
-            "saddle"
+            "saddle",
+            "horse armor"
     };
 
     private final AddonsPlugin addons;
@@ -55,10 +56,28 @@ public class CustomRecipes implements AddonInstance {
         saddle.setIngredient('I', Material.IRON_INGOT);
         saddle.setIngredient('S', Material.STRING);
 
+        ShapedRecipe ironHorseArmor = new ShapedRecipe(new NamespacedKey(this.addons, "iron_horse_armor"), new ItemStack(Material.IRON_HORSE_ARMOR, 1));
+        ironHorseArmor.shape("MS ", "MMM", "MMM");
+        ironHorseArmor.setIngredient('S', Material.SADDLE);
+        ironHorseArmor.setIngredient('M', Material.IRON_INGOT);
+
+        ShapedRecipe goldenHorseArmor = new ShapedRecipe(new NamespacedKey(this.addons, "golden_horse_armor"), new ItemStack(Material.GOLDEN_HORSE_ARMOR, 1));
+        goldenHorseArmor.shape("MS ", "MMM", "MMM");
+        goldenHorseArmor.setIngredient('S', Material.SADDLE);
+        goldenHorseArmor.setIngredient('M', Material.GOLD_INGOT);
+
+        ShapedRecipe diamondHorseArmor = new ShapedRecipe(new NamespacedKey(this.addons, "diamond_horse_armor"), new ItemStack(Material.DIAMOND_HORSE_ARMOR, 1));
+        diamondHorseArmor.shape("MS ", "MMM", "MMM");
+        diamondHorseArmor.setIngredient('S', Material.SADDLE);
+        diamondHorseArmor.setIngredient('M', Material.DIAMOND);
+
         Bukkit.addRecipe(ink);
         Bukkit.addRecipe(ink2);
         Bukkit.addRecipe(rails);
         Bukkit.addRecipe(saddle);
+        Bukkit.addRecipe(ironHorseArmor);
+        Bukkit.addRecipe(goldenHorseArmor);
+        Bukkit.addRecipe(diamondHorseArmor);
     }
 
     @Override
@@ -70,6 +89,10 @@ public class CustomRecipes implements AddonInstance {
         Bukkit.removeRecipe(new NamespacedKey(this.addons, "coal_ink_sac2"));
         Bukkit.removeRecipe(new NamespacedKey(this.addons, "iron_powered_rail"));
         Bukkit.removeRecipe(new NamespacedKey(this.addons, "saddle"));
+        Bukkit.removeRecipe(new NamespacedKey(this.addons, "iron_horse_armor"));
+        Bukkit.removeRecipe(new NamespacedKey(this.addons, "golden_horse_armor"));
+        Bukkit.removeRecipe(new NamespacedKey(this.addons, "diamond_horse_armor"));
+
     }
 
     @Override
