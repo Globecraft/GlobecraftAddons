@@ -4,6 +4,13 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.inventory.ItemStack;
+
 import com.sk89q.worldedit.bukkit.BukkitAdapter;
 import com.sk89q.worldedit.math.BlockVector3;
 import com.sk89q.worldedit.world.World;
@@ -14,13 +21,6 @@ import com.sk89q.worldguard.protection.ApplicableRegionSet;
 import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.RegionContainer;
 
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
-import org.bukkit.event.Listener;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.inventory.ItemStack;
-
 public class Hypothermia implements AddonInstance, Listener {
 	
 	private static final String[] hypothermiaHelpScreen = {
@@ -30,7 +30,7 @@ public class Hypothermia implements AddonInstance, Listener {
 			"or you get in too cold of a biome, you start to take damage",
 			"which gets higher the further up the mountain you go.",
 			"",
-			"A piece of leather armor removes 25% of the damage.",
+			"A piece of leather armor (or an elytra) removes 25% of the damage.",
 			"While a piece of some other armor removes 12.5% of the damage."
 	};
 	
@@ -103,6 +103,7 @@ public class Hypothermia implements AddonInstance, Listener {
 							case LEATHER_CHESTPLATE:
 							case LEATHER_LEGGINGS:
 							case LEATHER_HELMET:
+							case ELYTRA:
 								mult -= 0.25;
 								break;
 							case AIR:
