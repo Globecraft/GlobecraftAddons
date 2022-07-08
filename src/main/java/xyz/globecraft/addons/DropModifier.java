@@ -1,13 +1,16 @@
 package xyz.globecraft.addons;
 
-import org.bukkit.Material;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDeathEvent;
-import org.bukkit.inventory.ItemStack;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Stream;
+
+import org.bukkit.Material;
+import org.bukkit.entity.Item;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockDropItemEvent;
+import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.inventory.ItemStack;
 
 public class DropModifier implements AddonInstance, Listener {
     private static final String[] dropModifierHelpScreen = {
@@ -15,7 +18,8 @@ public class DropModifier implements AddonInstance, Listener {
             "",
             "Customise mob drops to discourage automatic farming.",
             "Set the iron golem iron drop rate.",
-            "And disallow gold dropping from nether mobs."
+            "And disallow gold dropping from nether mobs.",
+            "Disable fortune on gold ores."
     };
 
     private final AddonsPlugin addons;
@@ -84,7 +88,26 @@ public class DropModifier implements AddonInstance, Listener {
                 break;
             default:
         }
+    }
 
+    @EventHandler
+    public void onBlockItemDrop(BlockDropItemEvent e) {
+        if(!this.loaded) return;
+        
+        List<Item> drops = e.getItems();
+
+        // too lazy to give this an option in config lmao
+        switch (e.getBlockState().getType()) {
+            case GOLD_ORE:
+            case DEEPSLATE_GOLD_ORE:
+                if (drops.size() > 0) {
+                    Item drop = drops.get(0);
+                    ItemStack stack = drop.getItemStack();
+                    stack.setAmount(1);
+                }
+                break;
+            default:
+        }
     }
 
     @Override
