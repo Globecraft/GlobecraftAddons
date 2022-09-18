@@ -20,7 +20,9 @@ public class CustomRecipes implements AddonInstance {
             "charcoal to ink sac",
             "powered rails with iron",
             "saddle",
-            "horse armor"
+            "horse armor",
+            "prismarine",
+            "nametags"
     };
 
     private final AddonsPlugin addons;
@@ -71,6 +73,42 @@ public class CustomRecipes implements AddonInstance {
         diamondHorseArmor.setIngredient('S', Material.SADDLE);
         diamondHorseArmor.setIngredient('M', Material.DIAMOND);
 
+        ShapedRecipe primarineCrystals1 = new ShapedRecipe(new NamespacedKey(this.addons, "prismarine_crystals_one"), new ItemStack(Material.PRISMARINE_CRYSTALS, 4));
+        primarineCrystals1.shape("CK", "KC");
+        primarineCrystals1.setIngredient('C', Material.CLAY_BALL);
+        primarineCrystals1.setIngredient('K', Material.KELP);
+
+        ShapedRecipe primarineCrystals2 = new ShapedRecipe(new NamespacedKey(this.addons, "prismarine_crystals_two"), new ItemStack(Material.PRISMARINE_CRYSTALS, 4));
+        primarineCrystals2.shape("KC", "CK");
+        primarineCrystals2.setIngredient('C', Material.CLAY_BALL);
+        primarineCrystals2.setIngredient('K', Material.KELP);
+
+        ShapedRecipe primarineShards1 = new ShapedRecipe(new NamespacedKey(this.addons, "prismarine_shards_one"), new ItemStack(Material.PRISMARINE_SHARD, 4));
+        primarineShards1.shape("CCK", "CK ", "K  ");
+        primarineShards1.setIngredient('C', Material.CLAY_BALL);
+        primarineShards1.setIngredient('K', Material.KELP);
+
+        ShapedRecipe primarineShards2 = new ShapedRecipe(new NamespacedKey(this.addons, "prismarine_shards_two"), new ItemStack(Material.PRISMARINE_SHARD, 4));
+        primarineShards2.shape("  K", " KC", "KCC");
+        primarineShards2.setIngredient('C', Material.CLAY_BALL);
+        primarineShards2.setIngredient('K', Material.KELP);
+
+        ShapedRecipe primarineShards3 = new ShapedRecipe(new NamespacedKey(this.addons, "prismarine_shards_three"), new ItemStack(Material.PRISMARINE_SHARD, 4));
+        primarineShards3.shape("KCC", " KC", "  K");
+        primarineShards3.setIngredient('C', Material.CLAY_BALL);
+        primarineShards3.setIngredient('K', Material.KELP);
+
+        ShapedRecipe primarineShards4 = new ShapedRecipe(new NamespacedKey(this.addons, "prismarine_shards_four"), new ItemStack(Material.PRISMARINE_SHARD, 4));
+        primarineShards4.shape("K  ", "CK ", "CCK");
+        primarineShards4.setIngredient('C', Material.CLAY_BALL);
+        primarineShards4.setIngredient('K', Material.KELP);
+
+        ShapedRecipe nameTag = new ShapedRecipe(new NamespacedKey(this.addons, "name_tag"), new ItemStack(Material.NAME_TAG, 1));
+        nameTag.shape(" II", "LBI", "LL ");
+        nameTag.setIngredient('I', Material.IRON_INGOT);
+        nameTag.setIngredient('L', Material.LEATHER);
+        nameTag.setIngredient('B', Material.WRITABLE_BOOK);
+
         Bukkit.addRecipe(ink);
         Bukkit.addRecipe(ink2);
         Bukkit.addRecipe(rails);
@@ -78,6 +116,13 @@ public class CustomRecipes implements AddonInstance {
         Bukkit.addRecipe(ironHorseArmor);
         Bukkit.addRecipe(goldenHorseArmor);
         Bukkit.addRecipe(diamondHorseArmor);
+        Bukkit.addRecipe(primarineCrystals1);
+        Bukkit.addRecipe(primarineCrystals2);
+        Bukkit.addRecipe(primarineShards1);
+        Bukkit.addRecipe(primarineShards2);
+        Bukkit.addRecipe(primarineShards3);
+        Bukkit.addRecipe(primarineShards4);
+        Bukkit.addRecipe(nameTag);
     }
 
     @Override
@@ -92,7 +137,13 @@ public class CustomRecipes implements AddonInstance {
         Bukkit.removeRecipe(new NamespacedKey(this.addons, "iron_horse_armor"));
         Bukkit.removeRecipe(new NamespacedKey(this.addons, "golden_horse_armor"));
         Bukkit.removeRecipe(new NamespacedKey(this.addons, "diamond_horse_armor"));
-
+        Bukkit.removeRecipe(new NamespacedKey(this.addons, "prismarine_crystals_one"));
+        Bukkit.removeRecipe(new NamespacedKey(this.addons, "prismarine_crystals_two"));
+        Bukkit.removeRecipe(new NamespacedKey(this.addons, "prismarine_shards_one"));
+        Bukkit.removeRecipe(new NamespacedKey(this.addons, "prismarine_shards_two"));
+        Bukkit.removeRecipe(new NamespacedKey(this.addons, "prismarine_shards_three"));
+        Bukkit.removeRecipe(new NamespacedKey(this.addons, "prismarine_shards_four"));
+        Bukkit.removeRecipe(new NamespacedKey(this.addons, "name_tag"));
     }
 
     @Override
