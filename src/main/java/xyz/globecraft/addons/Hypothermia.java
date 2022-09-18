@@ -35,7 +35,7 @@ public class Hypothermia implements AddonInstance, Listener {
 	};
 	
 	private final AddonsPlugin addons;
-	private int minY, layerY, regionDamage, underCoverLight, clock;
+	private int minY, minYElytra, layerY, regionDamage, nearWarmthLight, clock;
 	private final boolean enabled;
 	private boolean loaded;
 	private final Set<UUID> killed;
@@ -54,9 +54,10 @@ public class Hypothermia implements AddonInstance, Listener {
 		this.loaded = true;
 
 		this.minY = addons.getConfig().getInt("hypothermia.danger-altitude", 130);
+		this.minYElytra = addons.getConfig().getInt("hypothermia.danger-elytra-altitude", 200);
 		this.layerY = addons.getConfig().getInt("hypothermia.blocks-per-heart", 10);
 		this.regionDamage = addons.getConfig().getInt("hypothermia.region-damage", 2);
-		this.underCoverLight = addons.getConfig().getInt("hypothermia.under-cover-light", 10);
+		this.nearWarmthLight = addons.getConfig().getInt("hypothermia.near-warmth-light", 7);
 
 		int tickClock = addons.getConfig().getInt("hypothermia.ticks-per-damage", 40);
 
@@ -92,9 +93,9 @@ public class Hypothermia implements AddonInstance, Listener {
 		for(Player p : addons.getServer().getOnlinePlayers()) {
 			py = p.getLocation().getBlockY();
 			icy = inIcyRegion(p);
-			if((py >= minY || icy) && playerOutside(p) && !p.isDead()) {
+			if(((p.isGliding() ? py >= minYElytra : py >= minY) || icy) && !playerLightWarm(p) && !p.isDead()) {
 				mult = 1;
-				dmg = (py - minY) / (layerY / 2);
+				dmg = (py - (p.isGliding() ? minYElytra : minY)) / (layerY / 2);
 				if(dmg <= 0) dmg = 0;
 				for(ItemStack i : p.getInventory().getArmorContents()) {
 					if(i != null) {
@@ -134,8 +135,8 @@ public class Hypothermia implements AddonInstance, Listener {
 		}
 	}
 
-	public boolean playerOutside(Player player) {
-		return player.getLocation().getBlock().getLightFromSky() > this.underCoverLight;
+	public boolean playerLightWarm(Player player) {
+		return player.getLocation().getBlock().getLightFromBlocks() > this.nearWarmthLight;
 	}
 
 	public boolean inIcyRegion(Player player) throws NullPointerException {

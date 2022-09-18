@@ -1,10 +1,11 @@
 hypothermia:
   enabled: true
   danger-altitude: 130
+  danger-elytra-altitude: 200
   blocks-per-heart: 10
   ticks-per-damage: 40
   region-damage: 2
-  under-cover-light: 10
+  near-warmth-light: 7
 
 randomspawn:
   enabled: true
