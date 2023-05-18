@@ -22,7 +22,8 @@ public class CustomRecipes implements AddonInstance {
             "saddle",
             "horse armor",
             "prismarine",
-            "nametags"
+            "nametags",
+            "chainmail armor"
     };
 
     private final AddonsPlugin addons;
@@ -109,6 +110,22 @@ public class CustomRecipes implements AddonInstance {
         nameTag.setIngredient('L', Material.LEATHER);
         nameTag.setIngredient('B', Material.WRITABLE_BOOK);
 
+        ShapedRecipe chainMailBoots = new ShapedRecipe(new NamespacedKey(this.addons, "chainmail_boots"), new ItemStack(Material.CHAINMAIL_BOOTS, 1));
+        chainMailBoots.shape("C C", "C C");
+        chainMailBoots.setIngredient('C', Material.CHAIN);
+        
+        ShapedRecipe chainMailLeggings = new ShapedRecipe(new NamespacedKey(this.addons, "chainmail_leggings"), new ItemStack(Material.CHAINMAIL_LEGGINGS, 1));
+        chainMailLeggings.shape("CCC", "C C", "C C");
+        chainMailLeggings.setIngredient('C', Material.CHAIN);
+
+        ShapedRecipe chainMailChestplate = new ShapedRecipe(new NamespacedKey(this.addons, "chainmail_chestplate"), new ItemStack(Material.CHAINMAIL_CHESTPLATE, 1));
+        chainMailChestplate.shape("C C", "CCC", "CCC");
+        chainMailChestplate.setIngredient('C', Material.CHAIN);
+
+        ShapedRecipe chainMailHelmet = new ShapedRecipe(new NamespacedKey(this.addons, "chainmail_helmet"), new ItemStack(Material.CHAINMAIL_HELMET, 1));
+        chainMailHelmet.shape("CCC", "C C");
+        chainMailHelmet.setIngredient('C', Material.CHAIN);
+
         Bukkit.addRecipe(ink);
         Bukkit.addRecipe(ink2);
         Bukkit.addRecipe(rails);
@@ -123,6 +140,10 @@ public class CustomRecipes implements AddonInstance {
         Bukkit.addRecipe(primarineShards3);
         Bukkit.addRecipe(primarineShards4);
         Bukkit.addRecipe(nameTag);
+        Bukkit.addRecipe(chainMailBoots);
+        Bukkit.addRecipe(chainMailLeggings);
+        Bukkit.addRecipe(chainMailChestplate);
+        Bukkit.addRecipe(chainMailHelmet);
     }
 
     @Override
@@ -144,6 +165,10 @@ public class CustomRecipes implements AddonInstance {
         Bukkit.removeRecipe(new NamespacedKey(this.addons, "prismarine_shards_three"));
         Bukkit.removeRecipe(new NamespacedKey(this.addons, "prismarine_shards_four"));
         Bukkit.removeRecipe(new NamespacedKey(this.addons, "name_tag"));
+        Bukkit.removeRecipe(new NamespacedKey(this.addons, "chainmail_boots"));
+        Bukkit.removeRecipe(new NamespacedKey(this.addons, "chainmail_leggings"));
+        Bukkit.removeRecipe(new NamespacedKey(this.addons, "chainmail_chestplate"));
+        Bukkit.removeRecipe(new NamespacedKey(this.addons, "chainmail_helmet"));
     }
 
     @Override
