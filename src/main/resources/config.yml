@@ -50,3 +50,7 @@ dropmodifier:
     min: 1
     max: 2
   nogold: true
+
+townynationcolors:
+  enabled: true
+  color: "#FF2525"

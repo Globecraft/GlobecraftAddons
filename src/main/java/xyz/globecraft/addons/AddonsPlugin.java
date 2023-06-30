@@ -36,6 +36,7 @@ public class AddonsPlugin extends JavaPlugin {
 		instances.add(new RandomSpawn(this));
 		instances.add(new VoteSkipNight(this));
 		instances.add(new DropModifier(this));
+		instances.add(new TownyNationColors(this));
 
 		for(AddonInstance instance : instances) {
 			if(instance.enabled()) {

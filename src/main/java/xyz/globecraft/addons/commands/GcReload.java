@@ -20,6 +20,7 @@ public class GcReload implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         StringBuilder s = new StringBuilder();
+        this.addons.reloadConfig();
 
         for(AddonInstance instance : this.addons.getAddons()) {
             if(instance.getName().equalsIgnoreCase(String.join(" ", Arrays.asList(args)))) {
