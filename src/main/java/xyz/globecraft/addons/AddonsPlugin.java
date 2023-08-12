@@ -9,6 +9,7 @@ import com.sk89q.worldguard.protection.flags.registry.FlagConflictException;
 import com.sk89q.worldguard.protection.flags.registry.FlagRegistry;
 
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.plugin.PluginLogger;
 
 import xyz.globecraft.addons.commands.*;
 
@@ -50,13 +51,14 @@ public class AddonsPlugin extends JavaPlugin {
 
 	@Override
 	public void onLoad() {
-		System.out.println("Loading GlobecraftAddons...");
+		getLogger().info("Loading GlobecraftAddons...");
 	}
 
 	@Override
 	public void onDisable() {
 		for(AddonInstance instance : instances) {
 			instance.disable();
+		getLogger().info("Shutting Down GlobecraftAddons...");
 		}
 	}
 
