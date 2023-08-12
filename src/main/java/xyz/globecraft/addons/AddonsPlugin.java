@@ -15,11 +15,6 @@ import xyz.globecraft.addons.commands.*;
 public class AddonsPlugin extends JavaPlugin {
 	private final ArrayList<AddonInstance> instances = new ArrayList<AddonInstance>();
 
-	private static StateFlag HYPOTHERMIA_FLAG;
-	public static StateFlag getHypothermiaFlag() {
-		return HYPOTHERMIA_FLAG;
-	}
-
 	public static AddonsPlugin instance;
 	public static AddonsPlugin getInstance() {
 		return instance;
@@ -30,12 +25,8 @@ public class AddonsPlugin extends JavaPlugin {
 		instance = this;
 		saveDefaultConfig();
 
-		instances.add(new Hypothermia(this));
-		instances.add(new CustomRecipes(this));
 		instances.add(new ItemNamedBy(this));
 		instances.add(new RandomSpawn(this));
-		instances.add(new VoteSkipNight(this));
-		instances.add(new DropModifier(this));
 		instances.add(new TownyNationColors(this));
 
 		for(AddonInstance instance : instances) {
@@ -59,20 +50,7 @@ public class AddonsPlugin extends JavaPlugin {
 
 	@Override
 	public void onLoad() {
-		FlagRegistry registry = WorldGuard.getInstance().getFlagRegistry();
-		try {
-			StateFlag flag = new StateFlag("hypothermia", false);
-			registry.register(flag);
-			HYPOTHERMIA_FLAG = flag;
-		} catch (FlagConflictException e) {
-			Flag<?> existing = registry.get("hypothermia");
-			if (existing instanceof StateFlag) {
-				HYPOTHERMIA_FLAG = (StateFlag) existing;
-				getLogger().warning("Using pre-existing hypothermia WG flag.");
-			} else {
-				getLogger().warning("Error creating hypothermia WG Flag:\n" + e.getMessage());
-			}
-		}
+		System.out.println("Loading GlobecraftAddons...");
 	}
 
 	@Override
