@@ -1,16 +1,7 @@
 package xyz.globecraft.addons;
 
 import java.util.ArrayList;
-
-import com.sk89q.worldguard.WorldGuard;
-import com.sk89q.worldguard.protection.flags.Flag;
-import com.sk89q.worldguard.protection.flags.StateFlag;
-import com.sk89q.worldguard.protection.flags.registry.FlagConflictException;
-import com.sk89q.worldguard.protection.flags.registry.FlagRegistry;
-
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.plugin.PluginLogger;
-
 import xyz.globecraft.addons.commands.*;
 
 public class AddonsPlugin extends JavaPlugin {
@@ -29,6 +20,7 @@ public class AddonsPlugin extends JavaPlugin {
 		instances.add(new ItemNamedBy(this));
 		instances.add(new RandomSpawn(this));
 		instances.add(new TownyNationColors(this));
+		instances.add(new DropModifier(this));
 
 		for(AddonInstance instance : instances) {
 			if(instance.enabled()) {
@@ -58,8 +50,8 @@ public class AddonsPlugin extends JavaPlugin {
 	public void onDisable() {
 		for(AddonInstance instance : instances) {
 			instance.disable();
-		getLogger().info("Shutting Down GlobecraftAddons...");
 		}
+		getLogger().info("Shutting Down GlobecraftAddons...");
 	}
 
 	public ArrayList<AddonInstance> getAddons() {
