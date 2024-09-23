@@ -106,6 +106,9 @@ public class DropModifier implements AddonInstance, Listener {
                     stack.setAmount(1);
                 }
                 break;
+            case NETHER_GOLD_ORE:
+                drops.clear();
+                break;
             default:
         }
     }
